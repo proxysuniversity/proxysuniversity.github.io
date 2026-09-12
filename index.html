@@ -55,6 +55,7 @@ LINE 163-177:
 FILES NEEDED IN THE SAME FOLDER:
   index.html
   proxyuniversitylogo.png
+  icon.png
   blocked.png
   bgmusic01.mp3
   bgmusic02.mp3
@@ -72,7 +73,9 @@ If you add/remove lines, the numbers will change.
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Websites</title>
+
+    <title>Page Blocked</title>
+    <link rel="icon" type="image/png" href="icon.png">
 
     <style>
         * {
@@ -203,21 +206,111 @@ If you add/remove lines, the numbers will change.
             ];
 
         const websites = [
-            { name: "Google", image: "", url: "https://www.google.com", description: "Google is a search engine that lets you find information on the web.", hide: false },
-            { name: "YouTube", image: "", url: "https://www.youtube.com", description: "YouTube is a website for watching and sharing videos.", hide: false },
-            { name: "GitHub", image: "", url: "https://github.com", description: "GitHub is a platform for hosting and collaborating on software projects.", hide: false },
-            { name: "Wikipedia", image: "", url: "https://www.wikipedia.org", description: "Wikipedia is a free online encyclopedia.", hide: false },
-            { name: "Reddit", image: "", url: "https://www.reddit.com", description: "Reddit is a collection of online communities where people discuss different topics.", hide: false },
-            { name: "Discord", image: "", url: "https://discord.com", description: "Discord is a communication platform for communities and friends.", hide: false },
-            { name: "Twitch", image: "", url: "https://www.twitch.tv", description: "Twitch is a platform for live streaming.", hide: false },
-            { name: "Google Drive", image: "", url: "https://drive.google.com", description: "Google Drive is an online file storage service.", hide: false },
-            { name: "Google Docs", image: "", url: "https://docs.google.com", description: "Google Docs lets you create and edit documents online.", hide: false },
-            { name: "Steam", image: "", url: "https://store.steampowered.com", description: "Steam is a digital distribution platform for PC games.", hide: false },
-            { name: "Spotify", image: "", url: "https://open.spotify.com", description: "Spotify is a music and audio streaming service.", hide: false },
-            { name: "Canva", image: "", url: "https://www.canva.com", description: "Canva is an online graphic design platform.", hide: false },
-            { name: "CodePen", image: "", url: "https://codepen.io", description: "CodePen is an online editor for HTML, CSS and JavaScript.", hide: false },
-            { name: "Stack Overflow", image: "", url: "https://stackoverflow.com", description: "Stack Overflow is a question-and-answer site for programmers.", hide: false },
-            { name: "Internet Archive", image: "", url: "https://archive.org", description: "The Internet Archive preserves websites, books, videos and other digital media.", hide: false }
+            {
+                name: "Google",
+                image: "",
+                url: "https://www.google.com",
+                description: "Google is a search engine that lets you find information on the web.",
+                hide: false
+            },
+            {
+                name: "YouTube",
+                image: "",
+                url: "https://www.youtube.com",
+                description: "YouTube is a website for watching and sharing videos.",
+                hide: false
+            },
+            {
+                name: "GitHub",
+                image: "",
+                url: "https://github.com",
+                description: "GitHub is a platform for hosting and collaborating on software projects.",
+                hide: false
+            },
+            {
+                name: "Wikipedia",
+                image: "",
+                url: "https://www.wikipedia.org",
+                description: "Wikipedia is a free online encyclopedia.",
+                hide: false
+            },
+            {
+                name: "Reddit",
+                image: "",
+                url: "https://www.reddit.com",
+                description: "Reddit is a collection of online communities where people discuss different topics.",
+                hide: false
+            },
+            {
+                name: "Discord",
+                image: "",
+                url: "https://discord.com",
+                description: "Discord is a communication platform for communities and friends.",
+                hide: false
+            },
+            {
+                name: "Twitch",
+                image: "",
+                url: "https://www.twitch.tv",
+                description: "Twitch is a platform for live streaming.",
+                hide: false
+            },
+            {
+                name: "Google Drive",
+                image: "",
+                url: "https://drive.google.com",
+                description: "Google Drive is an online file storage service.",
+                hide: false
+            },
+            {
+                name: "Google Docs",
+                image: "",
+                url: "https://docs.google.com",
+                description: "Google Docs lets you create and edit documents online.",
+                hide: false
+            },
+            {
+                name: "Steam",
+                image: "",
+                url: "https://store.steampowered.com",
+                description: "Steam is a digital distribution platform for PC games.",
+                hide: false
+            },
+            {
+                name: "Spotify",
+                image: "",
+                url: "https://open.spotify.com",
+                description: "Spotify is a music and audio streaming service.",
+                hide: false
+            },
+            {
+                name: "Canva",
+                image: "",
+                url: "https://www.canva.com",
+                description: "Canva is an online graphic design platform.",
+                hide: false
+            },
+            {
+                name: "CodePen",
+                image: "",
+                url: "https://codepen.io",
+                description: "CodePen is an online editor for HTML, CSS and JavaScript.",
+                hide: false
+            },
+            {
+                name: "Stack Overflow",
+                image: "",
+                url: "https://stackoverflow.com",
+                description: "Stack Overflow is a question-and-answer site for programmers.",
+                hide: false
+            },
+            {
+                name: "Internet Archive",
+                image: "",
+                url: "https://archive.org",
+                description: "The Internet Archive preserves websites, books, videos and other digital media.",
+                hide: false
+            }
         ];
 
         const titleElement = document.getElementById("pageTitle");
@@ -262,6 +355,7 @@ If you add/remove lines, the numbers will change.
 
             div.innerHTML = `
                 ${nameHTML}
+
                 <p>
                     <a
                         href="${site.url}"
@@ -271,6 +365,7 @@ If you add/remove lines, the numbers will change.
                         ${site.url}
                     </a>
                 </p>
+
                 <p>${site.description}</p>
             `;
 
@@ -284,6 +379,7 @@ If you add/remove lines, the numbers will change.
         ];
 
         const music = document.getElementById("music");
+
         let playlist = [];
         let currentSong = 0;
 
@@ -328,6 +424,7 @@ If you add/remove lines, the numbers will change.
         blockedScreen.addEventListener("click", function() {
             playlist = shuffle(songs);
             currentSong = 0;
+
             playSong();
 
             blockedScreen.classList.add("fade");
@@ -340,5 +437,6 @@ If you add/remove lines, the numbers will change.
             }, 800);
         }, { once: true });
     </script>
+
 </body>
 </html>
