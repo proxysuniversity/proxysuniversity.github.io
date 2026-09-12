@@ -1,73 +1,3 @@
-<!--
-============================================================
-                    CODE GUIDE / LINE NUMBERS
-============================================================
-
-LINE 1-50:
-  CSS / website appearance
-
-LINE 52-56:
-  Blocked screen image
-  Change "blocked.png" here if you want a different image.
-
-LINE 58-63:
-  Main website layout
-
-LINE 65-69:
-  Page title/logo settings
-  Change proxyuniversitylogo.png to change the logo.
-
-LINE 71-76:
-  Random subtitle messages
-  Add, remove, or edit messages here.
-
-LINE 78-95:
-  Website list
-  Add or remove websites here.
-
-  name        = Website name
-  image       = Image filename (leave "" for text)
-  url         = Website URL
-  description = Description
-  hide        = true/false
-
-LINE 97-101:
-  Displays the page title/logo.
-
-LINE 103-126:
-  Displays the website list.
-
-LINE 128-139:
-  Music playlist
-  Current songs:
-    bgmusic01.mp3
-    bgmusic02.mp3
-    bgmusic03.mp3
-
-LINE 141-161:
-  Music shuffle and playback system.
-
-LINE 163-177:
-  Blocked screen click behavior.
-  Clicking the blocked screen starts the shuffled music
-  and unlocks the website.
-
-FILES NEEDED IN THE SAME FOLDER:
-  index.html
-  proxyuniversitylogo.png
-  icon.png
-  blocked.png
-  bgmusic01.mp3
-  bgmusic02.mp3
-  bgmusic03.mp3
-
-============================================================
-NOTE:
-The line numbers above are based on this exact version.
-If you add/remove lines, the numbers will change.
-============================================================
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +12,8 @@ If you add/remove lines, the numbers will change.
             box-sizing: border-box;
         }
 
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
@@ -180,153 +111,189 @@ If you add/remove lines, the numbers will change.
     </div>
 
     <main id="site">
+
         <div id="pageTitle"></div>
+
         <p id="randomMessage"></p>
+
         <div id="websiteList"></div>
+
     </main>
 
     <audio id="music" preload="auto"></audio>
 
     <script>
+
         const pageTitle = {
             text: "My Websites",
             image: "proxyuniversitylogo.png"
         };
 
+
         const randomMessages = [
             "f students are inventors",
             "I'm getting bored!",
             "who could honestly top this?",
-          "let me guess, you found this website on a piece of paper didn't you",
-          "you found this on the teachers board or a piece of paper"
-          "literally the best proxy research website ever",
-          "GoGurdian got nothing on this, maybe...?",
-          "i don't like writing these messages bro",
-          "sudeys, i know you're there.",
-          "imma just leave this website alone for a minute",
-          "i found some random jersey club songs of youtube",
-          "these songs are peak",
-          "pro tip: the blocked thingy is fake just click and get started",
-          "literally this website is peak bro",
-          "if the website says (blocked.gogurdian.com) then it's actually blocked idk why tho."
+            "let me guess, you found this website on a piece of paper didn't you",
+            "you found this on the teachers board or a piece of paper",
+            "literally the best proxy research website ever",
+            "GoGurdian got nothing on this, maybe...?",
+            "i don't like writing these messages bro",
+            "sudeys, i know you're there.",
+            "imma just leave this website alone for a minute",
+            "i found some random jersey club songs of youtube",
+            "these songs are peak",
+            "pro tip: the blocked thingy is fake just click and get started",
+            "literally this website is peak bro",
+            "if the website says (blocked.gogurdian.com) then it's actually blocked idk why tho."
         ];
+
 
         document.getElementById("randomMessage").textContent =
             randomMessages[
                 Math.floor(Math.random() * randomMessages.length)
             ];
 
+
         const websites = [
+
+            {
+                name: "Google",
+                image: "",
+                url: "https://www.google.com/",
+                description: "Search the web",
+                hide: false
+            },
+
+            {
+                name: "YouTube",
+                image: "",
+                url: "https://www.youtube.com/",
+                description: "Watch videos",
+                hide: false
+            },
+
+            {
+                name: "GitHub",
+                image: "",
+                url: "https://github.com/",
+                description: "Code hosting and development",
+                hide: false
+            },
+
+            {
+                name: "Wikipedia",
+                image: "",
+                url: "https://www.wikipedia.org/",
+                description: "Free online encyclopedia",
+                hide: false
+            },
+
+            {
+                name: "Reddit",
+                image: "",
+                url: "https://www.reddit.com/",
+                description: "Online communities",
+                hide: false
+            },
+
+            {
+                name: "Discord",
+                image: "",
+                url: "https://discord.com/",
+                description: "Chat and communities",
+                hide: false
+            },
+
+            {
+                name: "Twitch",
+                image: "",
+                url: "https://www.twitch.tv/",
+                description: "Live streaming",
+                hide: false
+            },
+
+            {
+                name: "Google Drive",
+                image: "",
+                url: "https://drive.google.com/",
+                description: "Cloud file storage",
+                hide: false
+            },
+
+            {
+                name: "Google Docs",
+                image: "",
+                url: "https://docs.google.com/",
+                description: "Online documents",
+                hide: false
+            },
+
+            {
+                name: "Steam",
+                image: "",
+                url: "https://store.steampowered.com/",
+                description: "PC gaming platform",
+                hide: false
+            },
+
+            {
+                name: "Spotify",
+                image: "",
+                url: "https://open.spotify.com/",
+                description: "Music streaming",
+                hide: false
+            },
+
+            {
+                name: "Canva",
+                image: "",
+                url: "https://www.canva.com/",
+                description: "Online design tools",
+                hide: false
+            },
+
+            {
+                name: "CodePen",
+                image: "",
+                url: "https://codepen.io/",
+                description: "Online code editor",
+                hide: false
+            },
+
+            {
+                name: "Stack Overflow",
+                image: "",
+                url: "https://stackoverflow.com/",
+                description: "Programming questions and answers",
+                hide: false
+            },
+
+            {
+                name: "Internet Archive",
+                image: "",
+                url: "https://archive.org/",
+                description: "Digital library and archives",
+                hide: false
+            },
+
             {
                 name: "Frogies Arcade",
                 image: "https://avatars.githubusercontent.com/u/115168315?v=4",
                 url: "https://xn--68ja2bjb6b6c1ea6n6586bf9xa0k009 e3pze.xyz/",
                 description: "Frogies Arcade",
                 hide: false
-            },
-            {
-                name: "YouTube",
-                image: "",
-                url: "https://www.youtube.com",
-                description: "YouTube is a website for watching and sharing videos.",
-                hide: false
-            },
-            {
-                name: "GitHub",
-                image: "",
-                url: "https://github.com",
-                description: "GitHub is a platform for hosting and collaborating on software projects.",
-                hide: false
-            },
-            {
-                name: "Wikipedia",
-                image: "",
-                url: "https://www.wikipedia.org",
-                description: "Wikipedia is a free online encyclopedia.",
-                hide: false
-            },
-            {
-                name: "Reddit",
-                image: "",
-                url: "https://www.reddit.com",
-                description: "Reddit is a collection of online communities where people discuss different topics.",
-                hide: false
-            },
-            {
-                name: "Discord",
-                image: "",
-                url: "https://discord.com",
-                description: "Discord is a communication platform for communities and friends.",
-                hide: false
-            },
-            {
-                name: "Twitch",
-                image: "",
-                url: "https://www.twitch.tv",
-                description: "Twitch is a platform for live streaming.",
-                hide: false
-            },
-            {
-                name: "Google Drive",
-                image: "",
-                url: "https://drive.google.com",
-                description: "Google Drive is an online file storage service.",
-                hide: false
-            },
-            {
-                name: "Google Docs",
-                image: "",
-                url: "https://docs.google.com",
-                description: "Google Docs lets you create and edit documents online.",
-                hide: false
-            },
-            {
-                name: "Steam",
-                image: "",
-                url: "https://store.steampowered.com",
-                description: "Steam is a digital distribution platform for PC games.",
-                hide: false
-            },
-            {
-                name: "Spotify",
-                image: "",
-                url: "https://open.spotify.com",
-                description: "Spotify is a music and audio streaming service.",
-                hide: false
-            },
-            {
-                name: "Canva",
-                image: "",
-                url: "https://www.canva.com",
-                description: "Canva is an online graphic design platform.",
-                hide: false
-            },
-            {
-                name: "CodePen",
-                image: "",
-                url: "https://codepen.io",
-                description: "CodePen is an online editor for HTML, CSS and JavaScript.",
-                hide: false
-            },
-            {
-                name: "Stack Overflow",
-                image: "",
-                url: "https://stackoverflow.com",
-                description: "Stack Overflow is a question-and-answer site for programmers.",
-                hide: false
-            },
-            {
-                name: "Internet Archive",
-                image: "",
-                url: "https://archive.org",
-                description: "The Internet Archive preserves websites, books, videos and other digital media.",
-                hide: false
             }
+
         ];
 
-        const titleElement = document.getElementById("pageTitle");
+
+        const titleElement =
+            document.getElementById("pageTitle");
+
 
         if (pageTitle.image !== "") {
+
             titleElement.innerHTML = `
                 <img
                     src="${pageTitle.image}"
@@ -334,23 +301,38 @@ If you add/remove lines, the numbers will change.
                     class="title-image"
                 >
             `;
+
         } else {
+
             titleElement.innerHTML = `
                 <h1>${pageTitle.text}</h1>
             `;
+
         }
 
-        const list = document.getElementById("websiteList");
+
+        const list =
+            document.getElementById("websiteList");
+
 
         websites.forEach(site => {
-            if (site.hide === true) return;
 
-            const div = document.createElement("div");
+            if (site.hide === true) {
+                return;
+            }
+
+
+            const div =
+                document.createElement("div");
+
             div.className = "website";
+
 
             let nameHTML;
 
+
             if (site.image !== "") {
+
                 nameHTML = `
                     <img
                         src="${site.image}"
@@ -358,11 +340,15 @@ If you add/remove lines, the numbers will change.
                         class="website-image"
                     >
                 `;
+
             } else {
+
                 nameHTML = `
                     <h2>${site.name}</h2>
                 `;
+
             }
+
 
             div.innerHTML = `
                 ${nameHTML}
@@ -380,8 +366,11 @@ If you add/remove lines, the numbers will change.
                 <p>${site.description}</p>
             `;
 
+
             list.appendChild(div);
+
         });
+
 
         const songs = [
             "bgmusic01.mp3",
@@ -389,64 +378,140 @@ If you add/remove lines, the numbers will change.
             "bgmusic03.mp3"
         ];
 
-        const music = document.getElementById("music");
+
+        const music =
+            document.getElementById("music");
+
 
         let playlist = [];
         let currentSong = 0;
 
+
         function shuffle(array) {
+
             const shuffled = [...array];
 
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                const random = Math.floor(
-                    Math.random() * (i + 1)
-                );
 
-                [shuffled[i], shuffled[random]] =
-                [shuffled[random], shuffled[i]];
+            for (
+                let i = shuffled.length - 1;
+                i > 0;
+                i--
+            ) {
+
+                const random =
+                    Math.floor(
+                        Math.random() * (i + 1)
+                    );
+
+
+                [
+                    shuffled[i],
+                    shuffled[random]
+                ] = [
+                    shuffled[random],
+                    shuffled[i]
+                ];
+
             }
 
+
             return shuffled;
+
         }
 
+
         function playSong() {
+
             if (currentSong >= playlist.length) {
                 return;
             }
 
-            music.src = playlist[currentSong];
+
+            music.src =
+                playlist[currentSong];
+
 
             music.play().catch(error => {
-                console.log("Music could not start:", error);
+
+                console.log(
+                    "Music could not start:",
+                    error
+                );
+
             });
+
         }
 
-        music.addEventListener("ended", function() {
-            currentSong++;
 
-            if (currentSong < playlist.length) {
-                playSong();
+        music.addEventListener(
+            "ended",
+            function() {
+
+                currentSong++;
+
+
+                if (
+                    currentSong <
+                    playlist.length
+                ) {
+
+                    playSong();
+
+                }
+
             }
-        });
+        );
+
 
         const blockedScreen =
-            document.getElementById("blockedScreen");
+            document.getElementById(
+                "blockedScreen"
+            );
 
-        blockedScreen.addEventListener("click", function() {
-            playlist = shuffle(songs);
-            currentSong = 0;
 
-            playSong();
+        blockedScreen.addEventListener(
+            "click",
+            function() {
 
-            blockedScreen.classList.add("fade");
+                playlist =
+                    shuffle(songs);
 
-            document.body.classList.remove("locked");
-            document.body.classList.add("ready");
+                currentSong = 0;
 
-            setTimeout(function() {
-                blockedScreen.remove();
-            }, 800);
-        }, { once: true });
+
+                playSong();
+
+
+                blockedScreen.classList.add(
+                    "fade"
+                );
+
+
+                document.body.classList.remove(
+                    "locked"
+                );
+
+
+                document.body.classList.add(
+                    "ready"
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        blockedScreen.remove();
+
+                    },
+                    800
+                );
+
+            },
+            {
+                once: true
+            }
+        );
+
     </script>
 
 </body>
