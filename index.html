@@ -21,7 +21,7 @@
         }
 
         body {
-            margin: 20px;
+            margin: 80px 20px 20px 20px;
         }
 
         #site {
@@ -50,7 +50,7 @@
             width: 100%;
             height: 100%;
             display: block;
-            object-fit: cover;
+            object-fit: contain;
             user-select: none;
             -webkit-user-drag: none;
         }
@@ -60,8 +60,53 @@
             pointer-events: none;
         }
 
+        #topHeader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 60px;
+            z-index: 1000;
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            padding: 8px 20px;
+            box-sizing: border-box;
+        }
+
+        .headerLogo {
+            height: 44px;
+            width: auto;
+            max-width: 260px;
+            object-fit: contain;
+        }
+
+        .headerInfo {
+            margin-left: auto;
+            text-align: right;
+            line-height: 1.2;
+            padding-left: 20px;
+        }
+
+        .announcementText {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .headerLoadingMessage {
+            font-size: 13px;
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
         body.locked {
             overflow: hidden;
+        }
+
+        .logo-link {
+            display: inline-block;
+            text-decoration: none;
         }
 
         .title-image {
@@ -106,8 +151,22 @@
 
 <body class="locked">
 
+    <header id="topHeader">
+        <a href="https://proxysuniversity.github.io/no,%20no%20no%20no%20DON%27T%20DO%20THAT!.mp4" class="logo-link">
+            <img
+                src="https://proxysuniversity.github.io/proxyuniversitylogo.png"
+                alt="Proxy's University"
+                class="headerLogo"
+            >
+        </a>
+        <div class="headerInfo">
+            <div class="announcementText">ANNOUNCEMENT</div>
+            <div id="headerLoadingMessage" class="headerLoadingMessage"></div>
+        </div>
+    </header>
+
     <div id="blockedScreen">
-        <img src="blocked.png" alt="Page Blocked by School Admin">
+        <img src="https://proxysuniversity.github.io/blocked.png" alt="Page Blocked by School Admin">
     </div>
 
     <main id="site">
@@ -149,11 +208,22 @@
             "ja'lieya, i know you're here. i'm suprised!"
         ];
 
+        const announcementText = "ANNOUNCEMENT";
 
-        document.getElementById("randomMessage").textContent =
-            randomMessages[
-                Math.floor(Math.random() * randomMessages.length)
-            ];
+        function setLoadingMessage() {
+            const message =
+                randomMessages[
+                    Math.floor(Math.random() * randomMessages.length)
+                ];
+
+            document.getElementById("headerLoadingMessage").textContent = message;
+            document.getElementById("randomMessage").textContent = message;
+        }
+
+        document.querySelector(".announcementText").textContent = announcementText;
+        setLoadingMessage();
+
+
 
 
         const websites = [
@@ -296,11 +366,13 @@
         if (pageTitle.image !== "") {
 
             titleElement.innerHTML = `
-                <img
-                    src="${pageTitle.image}"
-                    alt="${pageTitle.text}"
-                    class="title-image"
-                >
+                <a href="https://proxysuniversity.github.io/no,%20no%20no%20no%20DON%27T%20DO%20THAT!.mp4" class="logo-link">
+                    <img
+                        src="${pageTitle.image}"
+                        alt="${pageTitle.text}"
+                        class="title-image"
+                    >
+                </a>
             `;
 
         } else {
@@ -376,7 +448,10 @@
         const songs = [
             "bgmusic01.mp3",
             "bgmusic02.mp3",
-            "bgmusic03.mp3"
+            "bgmusic03.mp3",
+            "bgmusic04.mp3",
+            "bgmusic05.mp3",
+            "bgmusic06.mp3"
         ];
 
 
@@ -470,48 +545,55 @@
             );
 
 
-        blockedScreen.addEventListener(
-            "click",
-            function() {
+        const videoURL =
+            "https://proxysuniversity.github.io/no,%20no%20no%20no%20DON%27T%20DO%20THAT!.mp4";
 
-                playlist =
-                    shuffle(songs);
+        let blockedOpened = false;
 
+        function fadeBlockedScreen() {
+            if (blockedOpened) return;
+
+            blockedOpened = true;
+            blockedScreen.classList.add("fade");
+            document.body.classList.remove("locked");
+            document.body.classList.add("ready");
+
+            setTimeout(function() {
+                blockedScreen.style.display = "none";
+            }, 800);
+        }
+
+        let blockedClickTimer = null;
+        let blockedClickCount = 0;
+
+        blockedScreen.addEventListener("click", function() {
+            blockedClickCount++;
+
+            if (blockedClickTimer) {
+                clearTimeout(blockedClickTimer);
+            }
+
+            if (blockedClickCount >= 2) {
+                window.location.href = "https://proxysuniversity.github.io/no,%20no%20no%20no%20DON%27T%20DO%20THAT!.mp4";
+                return;
+            }
+
+            blockedClickTimer = setTimeout(function() {
+                blockedClickCount = 0;
+
+                playlist = shuffle(songs);
                 currentSong = 0;
-
-
                 playSong();
 
+                blockedScreen.classList.add("fade");
+                document.body.classList.remove("locked");
+                document.body.classList.add("ready");
 
-                blockedScreen.classList.add(
-                    "fade"
-                );
-
-
-                document.body.classList.remove(
-                    "locked"
-                );
-
-
-                document.body.classList.add(
-                    "ready"
-                );
-
-
-                setTimeout(
-                    function() {
-
-                        blockedScreen.remove();
-
-                    },
-                    800
-                );
-
-            },
-            {
-                once: true
-            }
-        );
+                setTimeout(function() {
+                    blockedScreen.remove();
+                }, 800);
+            }, 2000);
+        });
 
     </script>
 
