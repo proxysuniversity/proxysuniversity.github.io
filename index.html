@@ -65,20 +65,20 @@
             top: 0;
             left: 0;
             width: 100%;
-            min-height: 60px;
+            min-height: 88px;
             z-index: 1000;
             background: #fff;
             border-bottom: 1px solid #ddd;
             display: flex;
             align-items: center;
-            padding: 8px 20px;
+            padding: 10px 24px;
             box-sizing: border-box;
         }
 
         .headerLogo {
-            height: 44px;
+            height: 72px;
             width: auto;
-            max-width: 260px;
+            max-width: 420px;
             object-fit: contain;
         }
 
@@ -100,6 +100,29 @@
             margin-top: 2px;
         }
 
+        .headerButtons {
+            display: flex;
+            gap: 8px;
+            margin-left: 20px;
+        }
+
+        .headerButton {
+            padding: 8px 12px;
+            border: 1px solid #000;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .headerButton:hover {
+            background: #000;
+            color: #fff;
+        }
+
         body.locked {
             overflow: hidden;
         }
@@ -107,15 +130,6 @@
         .logo-link {
             display: inline-block;
             text-decoration: none;
-        }
-
-        .title-image {
-            max-width: 500px;
-            max-height: 150px;
-            width: auto;
-            height: auto;
-            display: block;
-            margin-bottom: 5px;
         }
 
         .website-image {
@@ -163,17 +177,17 @@
             <div class="announcementText">ANNOUNCEMENT</div>
             <div id="headerLoadingMessage" class="headerLoadingMessage"></div>
         </div>
+        <div class="headerButtons">
+            <button id="muteButton" class="headerButton" type="button">Mute Songs</button>
+            <a class="headerButton" href="https://www.instagram.com/aaron_thecarter/" target="_blank" rel="noopener noreferrer">Support Me</a>
+        </div>
     </header>
 
     <div id="blockedScreen">
-        <img src="https://proxysuniversity.github.io/blocked.png" alt="Page Blocked by School Admin">
+        <img src="https://proxysuniversity.github.io/blockedv2.png" alt="Page Blocked by School Admin">
     </div>
 
     <main id="site">
-
-        <div id="pageTitle"></div>
-
-        <p id="randomMessage"></p>
 
         <div id="websiteList"></div>
 
@@ -182,11 +196,6 @@
     <audio id="music" preload="auto"></audio>
 
     <script>
-
-        const pageTitle = {
-            text: "My Websites",
-            image: "proxyuniversitylogo.png"
-        };
 
 
         const randomMessages = [
@@ -217,7 +226,6 @@
                 ];
 
             document.getElementById("headerLoadingMessage").textContent = message;
-            document.getElementById("randomMessage").textContent = message;
         }
 
         document.querySelector(".announcementText").textContent = announcementText;
@@ -359,31 +367,6 @@
         ];
 
 
-        const titleElement =
-            document.getElementById("pageTitle");
-
-
-        if (pageTitle.image !== "") {
-
-            titleElement.innerHTML = `
-                <a href="https://proxysuniversity.github.io/no,%20no%20no%20no%20DON%27T%20DO%20THAT!.mp4" class="logo-link">
-                    <img
-                        src="${pageTitle.image}"
-                        alt="${pageTitle.text}"
-                        class="title-image"
-                    >
-                </a>
-            `;
-
-        } else {
-
-            titleElement.innerHTML = `
-                <h1>${pageTitle.text}</h1>
-            `;
-
-        }
-
-
         const list =
             document.getElementById("websiteList");
 
@@ -458,6 +441,19 @@
         const music =
             document.getElementById("music");
 
+        const muteButton =
+            document.getElementById("muteButton");
+
+        let songsMuted = false;
+
+        muteButton.addEventListener("click", function() {
+            songsMuted = !songsMuted;
+            music.muted = songsMuted;
+            muteButton.textContent = songsMuted
+                ? "Unmute Songs"
+                : "Mute Songs";
+        });
+
 
         let playlist = [];
         let currentSong = 0;
@@ -526,14 +522,11 @@
                 currentSong++;
 
 
-                if (
-                    currentSong <
-                    playlist.length
-                ) {
-
-                    playSong();
-
+                if (currentSong >= playlist.length) {
+                    currentSong = 0;
                 }
+
+                playSong();
 
             }
         );
@@ -546,7 +539,7 @@
 
 
         const videoURL =
-            "https://proxysuniversity.github.io/no,%20no%20no%20no%20DON%27T%20DO%20THAT!.mp4";
+            "https://docs.google.com/document/d/1qnY-Imx7m8iYtCCIHTRs1h-MFYHzV3xUczl8JMq2xpA/edit?usp=sharing";
 
         let blockedOpened = false;
 
@@ -574,7 +567,7 @@
             }
 
             if (blockedClickCount >= 2) {
-                window.location.href = "https://proxysuniversity.github.io/no,%20no%20no%20no%20DON%27T%20DO%20THAT!.mp4";
+                window.location.href = videoURL;
                 return;
             }
 
@@ -592,7 +585,7 @@
                 setTimeout(function() {
                     blockedScreen.remove();
                 }, 800);
-            }, 2000);
+            }, 500);
         });
 
     </script>
