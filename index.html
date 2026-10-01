@@ -241,7 +241,7 @@
             "literally this website is peak bro",
             "if the website says (blocked.gogurdian.com) then it's actually blocked idk why tho.",
             "ja'lieya, i know you're here. i'm suprised!",
-            "w to the red kid who said 'i use you're website at school'"
+            "w to the red kid who said 'i use you're website at school'",
             "i'm using links from proxyuniversity v1 and THEY WORK?!"
         ];
 
@@ -638,35 +638,43 @@
         }
 
         let blockedClickTimer = null;
-        let blockedClickCount = 0;
+
+        function openBlockedScreen() {
+            playlist = shuffle(songs);
+            currentSong = 0;
+            playSong();
+
+            blockedScreen.classList.add("fade");
+            document.body.classList.remove("locked");
+            document.body.classList.add("ready");
+
+            setTimeout(function() {
+                if (blockedScreen) {
+                    blockedScreen.remove();
+                }
+            }, 800);
+        }
 
         blockedScreen.addEventListener("click", function() {
-            blockedClickCount++;
-
             if (blockedClickTimer) {
                 clearTimeout(blockedClickTimer);
             }
 
-            if (blockedClickCount >= 2) {
-                window.location.href = videoURL;
-                return;
+            blockedClickTimer = setTimeout(function() {
+                blockedClickTimer = null;
+                openBlockedScreen();
+            }, 700);
+        });
+
+        blockedScreen.addEventListener("dblclick", function(event) {
+            event.preventDefault();
+
+            if (blockedClickTimer) {
+                clearTimeout(blockedClickTimer);
+                blockedClickTimer = null;
             }
 
-            blockedClickTimer = setTimeout(function() {
-                blockedClickCount = 0;
-
-                playlist = shuffle(songs);
-                currentSong = 0;
-                playSong();
-
-                blockedScreen.classList.add("fade");
-                document.body.classList.remove("locked");
-                document.body.classList.add("ready");
-
-                setTimeout(function() {
-                    blockedScreen.remove();
-                }, 800);
-            }, 500);
+            window.location.href = videoURL;
         });
 
     </script>
