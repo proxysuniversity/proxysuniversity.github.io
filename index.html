@@ -21,7 +21,7 @@
         }
 
         body {
-            margin: 80px 20px 20px 20px;
+            margin: 110px 20px 20px 20px;
         }
 
         #site {
@@ -158,6 +158,13 @@
             margin: 4px 0;
         }
 
+        .website-help {
+            margin: 2px 0 8px 0;
+            font-size: 11px;
+            line-height: 1.35;
+            color: #555;
+        }
+
         .followButton {
             display: inline-block;
             margin-top: 4px;
@@ -222,6 +229,16 @@
 
 
     <script>
+
+        const blockedScreen = document.getElementById("blockedScreen");
+        const videoURL = "https://proxysuniversity.github.io/no,%20no%20no%20no%20DON%27T%20DO%20THAT!.mp4";
+        let websiteStarted = false;
+
+        function startWebsite() {
+            if (websiteStarted) return;
+            websiteStarted = true;
+
+
 
 
         const randomMessages = [
@@ -399,6 +416,46 @@
                 url: "https://xn--68ja2bjb6b6c1ea6n6586bf9xa0k0e3pze.xyz/",
                 description: "Frogies Arcade",
                 hide: false
+            },
+
+            {
+                name: "Website Slot 21",
+                image: "",
+                url: "",
+                description: "",
+                hide: true
+            },
+
+            {
+                name: "Website Slot 22",
+                image: "",
+                url: "",
+                description: "",
+                hide: true
+            },
+
+            {
+                name: "Website Slot 23",
+                image: "",
+                url: "",
+                description: "",
+                hide: true
+            },
+
+            {
+                name: "Website Slot 24",
+                image: "",
+                url: "",
+                description: "",
+                hide: true
+            },
+
+            {
+                name: "Website Slot 25",
+                image: "",
+                url: "",
+                description: "",
+                hide: true
             }
 
         ];
@@ -490,6 +547,7 @@
                 </p>
 
                 <p>${site.description}</p>
+                <div class="website-help">What it can do: ${site.description}. How it works: click the link above to open the website in a new tab.</div>
             `;
 
             const followButton = div.querySelector(".followButton");
@@ -612,68 +670,28 @@
             }
         );
 
-
-        const blockedScreen =
-            document.getElementById(
-                "blockedScreen"
-            );
-
-
-        const videoURL =
-            "https://proxysuniversity.github.io/no,%20no%20no%20no%20DON%27T%20DO%20THAT!.mp4";
-
-        let blockedOpened = false;
-
-        function fadeBlockedScreen() {
-            if (blockedOpened) return;
-
-            blockedOpened = true;
-            blockedScreen.classList.add("fade");
-            document.body.classList.remove("locked");
-            document.body.classList.add("ready");
-
-            setTimeout(function() {
-                blockedScreen.style.display = "none";
-            }, 800);
-        }
-
-        let blockedClickTimer = null;
-
-        function openBlockedScreen() {
             playlist = shuffle(songs);
             currentSong = 0;
             playSong();
 
+        }
+
+        // The site's main JavaScript does not start until the blocked screen is pressed.
+        blockedScreen.addEventListener("click", function() {
+            startWebsite();
+
             blockedScreen.classList.add("fade");
             document.body.classList.remove("locked");
             document.body.classList.add("ready");
 
             setTimeout(function() {
-                if (blockedScreen) {
-                    blockedScreen.remove();
-                }
+                if (blockedScreen) blockedScreen.remove();
             }, 800);
-        }
+        }, { once: true });
 
-        blockedScreen.addEventListener("click", function() {
-            if (blockedClickTimer) {
-                clearTimeout(blockedClickTimer);
-            }
-
-            blockedClickTimer = setTimeout(function() {
-                blockedClickTimer = null;
-                openBlockedScreen();
-            }, 700);
-        });
-
+        // Keep the existing video shortcut, but use document.location for the navigation.
         blockedScreen.addEventListener("dblclick", function(event) {
             event.preventDefault();
-
-            if (blockedClickTimer) {
-                clearTimeout(blockedClickTimer);
-                blockedClickTimer = null;
-            }
-
             document.location.href = videoURL;
         });
 
