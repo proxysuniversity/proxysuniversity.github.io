@@ -676,8 +676,15 @@
 
         }
 
-        // The site's main JavaScript does not start until the blocked screen is pressed.
-        blockedScreen.addEventListener("click", function() {
+        // Single click starts the site, while double click opens the video.
+        // The short delay lets the browser detect a double click before starting the site.
+        let blockedClickTimer = null;
+        let blockedScreenOpened = false;
+
+        function openWebsiteFromBlockedScreen() {
+            if (blockedScreenOpened) return;
+            blockedScreenOpened = true;
+
             startWebsite();
 
             blockedScreen.classList.add("fade");
@@ -687,11 +694,28 @@
             setTimeout(function() {
                 if (blockedScreen) blockedScreen.remove();
             }, 800);
-        }, { once: true });
+        }
 
-        // Keep the existing video shortcut, but use document.location for the navigation.
+        blockedScreen.addEventListener("click", function() {
+            if (blockedClickTimer) {
+                clearTimeout(blockedClickTimer);
+            }
+
+            blockedClickTimer = setTimeout(function() {
+                blockedClickTimer = null;
+                openWebsiteFromBlockedScreen();
+            }, 250);
+        });
+
+        // Double click opens the existing video link instead of starting the site.
         blockedScreen.addEventListener("dblclick", function(event) {
             event.preventDefault();
+
+            if (blockedClickTimer) {
+                clearTimeout(blockedClickTimer);
+                blockedClickTimer = null;
+            }
+
             document.location.href = videoURL;
         });
 
