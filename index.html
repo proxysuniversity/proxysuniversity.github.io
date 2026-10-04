@@ -21,7 +21,7 @@
         }
 
         body {
-            margin: 80px 20px 20px 20px;
+            margin: 110px 20px 20px 20px;
         }
 
         #site {
@@ -124,69 +124,6 @@
             color: #fff;
         }
 
-        #updateLogs {
-            position: fixed;
-            inset: 0;
-            z-index: 999998;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.55);
-            padding: 20px;
-        }
-
-        #updateLogs.show {
-            display: flex;
-        }
-
-        .updateLogsBox {
-            width: min(600px, 100%);
-            max-height: 80vh;
-            overflow-y: auto;
-            background: #fff;
-            border: 1px solid #000;
-            padding: 20px;
-        }
-
-        .updateLogsHeader {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .updateLogsHeader h2 {
-            margin: 0;
-        }
-
-        .updateLog {
-            border-top: 1px solid #ddd;
-            padding: 12px 0;
-        }
-
-        .updateLog:first-child {
-            border-top: 0;
-            padding-top: 0;
-        }
-
-        .updateLogDate {
-            font-size: 12px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .updateLogTitle {
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .updateLogText {
-            margin: 0;
-            font-size: 14px;
-            line-height: 1.4;
-        }
-
         body.locked {
             overflow: hidden;
         }
@@ -221,6 +158,13 @@
             margin: 4px 0;
         }
 
+        .website-help {
+            margin: 2px 0 8px 0;
+            font-size: 11px;
+            line-height: 1.35;
+            color: #555;
+        }
+
         .followButton {
             display: inline-block;
             margin-top: 4px;
@@ -248,6 +192,38 @@
         .website a {
             color: #0000ee;
         }
+
+        .updateLogs {
+            margin: 40px 24px 24px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .updateLogs h2 {
+            margin: 0 0 12px;
+            font-size: 20px;
+        }
+
+        .updateLogEntry {
+            margin: 0 0 12px;
+            line-height: 1.45;
+            font-size: 14px;
+        }
+
+        .updateLogDate {
+            font-weight: 700;
+        }
+
+
+        .bottomBottomText {
+            margin-top: 45px;
+            padding: 15px 0 10px 0;
+            border-top: 1px solid #ddd;
+            font-size: 12px;
+            line-height: 1.4;
+            color: #555;
+        }
+
     </style>
 </head>
 
@@ -266,7 +242,6 @@
             <div id="headerLoadingMessage" class="headerLoadingMessage"></div>
         </div>
         <div class="headerButtons">
-            <button id="updateLogsButton" class="headerButton" type="button">Update Logs</button>
             <button id="muteButton" class="headerButton" type="button">Mute Songs</button>
             <a class="headerButton" href="https://www.instagram.com/aaron_thecarter/" target="_blank" rel="noopener noreferrer">Support Me</a>
         </div>
@@ -274,93 +249,6 @@
 
     <div id="blockedScreen">
         <img src="https://proxysuniversity.github.io/blockedv2.png" alt="Page Blocked by School Admin">
-    </div>
-
-    <div id="updateLogs" aria-hidden="true">
-        <div class="updateLogsBox" role="dialog" aria-modal="true" aria-labelledby="updateLogsTitle">
-            <div class="updateLogsHeader">
-                <h2 id="updateLogsTitle">Update Logs</h2>
-                <button id="closeUpdateLogs" class="headerButton" type="button">Close</button>
-            </div>
-
-            <div class="updateLog">
-                <div class="updateLogDate">September 26, 2026</div>
-                <div class="updateLogTitle">Update Logs Expanded</div>
-                <p class="updateLogText">Expanded the Update Logs into a full scrollable history so older updates can stay here instead of being replaced.</p>
-            </div>
-
-            <div class="updateLog">
-                <div class="updateLogDate">September 26, 2026</div>
-                <div class="updateLogTitle">Following &amp; New Link Detection</div>
-                <p class="updateLogText">Added the “Don't miss new links!” system so you can follow websites and get notified when a followed website changes its link.</p>
-            </div>
-
-            <div class="updateLog">
-                <div class="updateLogDate">September 26, 2026</div>
-                <div class="updateLogTitle">Loading Message Update</div>
-                <p class="updateLogText">Added the new random loading message: “w to the red kid who said 'i use you're website at school'”.</p>
-            </div>
-
-            <div class="updateLog">
-                <div class="updateLogDate">September 26, 2026</div>
-                <div class="updateLogTitle">Update Logs Added</div>
-                <p class="updateLogText">Added the first Update Logs window and a button in the header for opening it.</p>
-            </div>
-
-            <div class="updateLog">
-                <div class="updateLogDate">September 20, 2026</div>
-                <div class="updateLogTitle">Proxy's University Site Updates</div>
-                <p class="updateLogText">Continued updating the website list, header, loading behavior, music, and site presentation. This date is an approximate date based on our conversation history.</p>
-            </div>
-
-            <div class="updateLog">
-                <div class="updateLogDate">September 19, 2026</div>
-                <div class="updateLogTitle">Website &amp; Project Updates</div>
-                <p class="updateLogText">Continued building and updating Proxy's University and its linked projects. Approximate date based on our conversation history.</p>
-            </div>
-
-            <div class="updateLog">
-                <div class="updateLogDate">September 18, 2026</div>
-                <div class="updateLogTitle">Site &amp; Link Updates</div>
-                <p class="updateLogText">Worked on the website collection and continued refining Proxy's University. Approximate date based on our conversation history.</p>
-            </div>
-
-            <div class="updateLog">
-                <div class="updateLogDate">September 17, 2026</div>
-                <div class="updateLogTitle">Website List Updates</div>
-                <p class="updateLogText">Updated the website list and its entries while continuing development of the main Proxy's University page. Approximate date based on our conversation history.</p>
-            </div>
-
-            <div class="updateLog">
-                <div class="updateLogDate">September 16, 2026</div>
-                <div class="updateLogTitle">Proxy's University Development</div>
-                <p class="updateLogText">Continued development and changes to the main website. Approximate date based on our conversation history.</p>
-            </div>
-
-            <div class="updateLog">
-                <div class="updateLogDate">September 15, 2026</div>
-                <div class="updateLogTitle">Website Development</div>
-                <p class="updateLogText">Continued working on the Proxy's University website and its collection of links. Approximate date based on our conversation history.</p>
-            </div>
-
-            <div class="updateLog">
-                <div class="updateLogDate">September 14, 2026</div>
-                <div class="updateLogTitle">Main Site Refinements</div>
-                <p class="updateLogText">Continued refining the main site layout and website-list experience. Approximate date based on our conversation history.</p>
-            </div>
-
-            <div class="updateLog">
-                <div class="updateLogDate">September 13, 2026</div>
-                <div class="updateLogTitle">Proxy's University Updates</div>
-                <p class="updateLogText">Continued updates to the main Proxy's University page and its site behavior. Approximate date based on our conversation history.</p>
-            </div>
-
-            <div class="updateLog">
-                <div class="updateLogDate">September 12, 2026</div>
-                <div class="updateLogTitle">Major Proxy's University Update</div>
-                <p class="updateLogText">Worked extensively on the main Proxy's University page, including its header, blocked screen, loading messages, music, website list, and related presentation. This is the earliest dated Proxy's University development point I can reliably place from our conversation history.</p>
-            </div>
-        </div>
     </div>
 
     <main id="site">
@@ -373,6 +261,15 @@
 
 
     <script>
+
+        const blockedScreen = document.getElementById("blockedScreen");
+        const videoURL = "https://proxysuniversity.github.io/no,%20no%20no%20no%20DON%27T%20DO%20THAT!.mp4";
+        let websiteStarted = false;
+        function startWebsite() {
+            if (websiteStarted) return;
+            websiteStarted = true;
+
+
 
 
         const randomMessages = [
@@ -392,31 +289,65 @@
             "literally this website is peak bro",
             "if the website says (blocked.gogurdian.com) then it's actually blocked idk why tho.",
             "ja'lieya, i know you're here. i'm suprised!",
-            "w to the red kid who said 'i use you're website at school'"
+            "w to the red kid who said 'i use you're website at school'",
+            "i'm using links from proxyuniversity v1 and THEY WORK?!"
         ];
 
-        const announcementText = "ANNOUNCEMENT";
+        const announcementText = "2+ new links added";
 
-        const updateLogs = document.getElementById("updateLogs");
-        const updateLogsButton = document.getElementById("updateLogsButton");
-        const closeUpdateLogs = document.getElementById("closeUpdateLogs");
+        // EDIT THIS to change the text shown at the very bottom of the website.
+        // Leave it as "" to hide the bottom text completely.
+        const bottomText = "Proxy's University was created by Aaron Carter.";
 
-        updateLogsButton.addEventListener("click", function() {
-            updateLogs.classList.add("show");
-            updateLogs.setAttribute("aria-hidden", "false");
-        });
 
-        closeUpdateLogs.addEventListener("click", function() {
-            updateLogs.classList.remove("show");
-            updateLogs.setAttribute("aria-hidden", "true");
-        });
-
-        updateLogs.addEventListener("click", function(event) {
-            if (event.target === updateLogs) {
-                updateLogs.classList.remove("show");
-                updateLogs.setAttribute("aria-hidden", "true");
+        /*
+         * UPDATE LOGS
+         * Add a new entry for EVERY future update to this HTML file.
+         * Do not add approximate-date or conversation-history notes.
+         */
+        const updateLogs = [
+            {
+                date: "October 3, 2026",
+                text: "Moved the JavaScript browser-filter alert so it appears when the blocked screen is pressed instead of when the page first loads."
+            },
+            {
+                date: "October 3, 2026",
+                text: "Changed the browser-filter notice to use the native JavaScript alert() notification."
+            },
+            {
+                date: "October 3, 2026",
+                text: "Added the browser filter notification with an “i understand.” button and kept the notification neutral about browser or administrator restrictions."
+            },
+            {
+                date: "October 2, 2026",
+                text: "Added working single-click and double-click behavior to the blocked screen."
+            },
+            {
+                date: "October 2, 2026",
+                text: "Made the bottom website text editable with the bottomText setting."
+            },
+            {
+                date: "October 2, 2026",
+                text: "Added a small helper line under each website description explaining what the website can do and how it works."
+            },
+            {
+                date: "October 2, 2026",
+                text: "Added five extra hidden website slots (21–25) and adjusted the page spacing so the website list can be scrolled normally."
+            },
+            {
+                date: "October 2, 2026",
+                text: "Paused the main website startup until the blocked screen is pressed."
+            },
+            {
+                date: "October 2, 2026",
+                text: "Changed the blocked-screen image to blockedv2.png."
+            },
+            {
+                date: "October 2, 2026",
+                text: "Changed the blocked-screen video redirect to use document.location.href."
             }
-        });
+        ];
+
 
         function setLoadingMessage() {
             const message =
@@ -444,27 +375,27 @@
             },
 
             {
-                name: "YouTube",
-                image: "",
-                url: "https://www.youtube.com/",
-                description: "Watch videos",
-                hide: true
+                name: "Chatzy",
+                image: "https://www.chatzy.com/elements/logo90.png",
+                url: "https://www.chatzy.com/",
+                description: "Chatzy",
+                hide: false
             },
 
             {
-                name: "GitHub",
-                image: "",
-                url: "https://github.com/",
-                description: "Code hosting and development",
-                hide: true
+                name: "Rammerhead",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGiQJDXMH8pgWtH4BZ1DqkPhswHRe_5Z5BzhzeCluqLA&s=10",
+                url: "https://rammer.nana.pulsaudio.ro/",
+                description: "Rammerhead (press ⬅ if blocked)",
+                hide: false
             },
 
             {
-                name: "Wikipedia",
-                image: "",
-                url: "https://www.wikipedia.org/",
-                description: "Free online encyclopedia",
-                hide: true
+                name: "Truffled",
+                image: "https://proxysuniversity.github.io/truffled.png",
+                url: "https://locations.pro-kickboxing.org/",
+                description: "Truffled (press ⬅ if blocked)",
+                hide: false
             },
 
             {
@@ -570,6 +501,46 @@
                 url: "https://xn--68ja2bjb6b6c1ea6n6586bf9xa0k0e3pze.xyz/",
                 description: "Frogies Arcade",
                 hide: false
+            },
+
+            {
+                name: "Website Slot 21",
+                image: "",
+                url: "",
+                description: "",
+                hide: true
+            },
+
+            {
+                name: "Website Slot 22",
+                image: "",
+                url: "",
+                description: "",
+                hide: true
+            },
+
+            {
+                name: "Website Slot 23",
+                image: "",
+                url: "",
+                description: "",
+                hide: true
+            },
+
+            {
+                name: "Website Slot 24",
+                image: "",
+                url: "",
+                description: "",
+                hide: true
+            },
+
+            {
+                name: "Website Slot 25",
+                image: "",
+                url: "",
+                description: "",
+                hide: true
             }
 
         ];
@@ -661,6 +632,7 @@
                 </p>
 
                 <p>${site.description}</p>
+                <div class="website-help">What it can do: ${site.description}. How it works: click the link above to open the website in a new tab.</div>
             `;
 
             const followButton = div.querySelector(".followButton");
@@ -679,6 +651,38 @@
 
             list.appendChild(div);
         });
+
+        const updateLogsElement = document.createElement("section");
+        updateLogsElement.className = "updateLogs";
+
+        const updateLogsTitle = document.createElement("h2");
+        updateLogsTitle.textContent = "Update Logs";
+        updateLogsElement.appendChild(updateLogsTitle);
+
+        updateLogs.forEach(function(log) {
+            const entry = document.createElement("div");
+            entry.className = "updateLogEntry";
+
+            const date = document.createElement("span");
+            date.className = "updateLogDate";
+            date.textContent = log.date + " — ";
+
+            const text = document.createElement("span");
+            text.textContent = log.text;
+
+            entry.appendChild(date);
+            entry.appendChild(text);
+            updateLogsElement.appendChild(entry);
+        });
+
+        document.querySelector("main").appendChild(updateLogsElement);
+
+        if (bottomText.trim() !== "") {
+            const bottomTextElement = document.createElement("div");
+            bottomTextElement.className = "bottomBottomText";
+            bottomTextElement.textContent = bottomText;
+            document.querySelector("main").appendChild(bottomTextElement);
+        }
 
         const songs = [
             "bgmusic01.mp3",
@@ -783,96 +787,58 @@
             }
         );
 
+            playlist = shuffle(songs);
+            currentSong = 0;
+            playSong();
 
-        const blockedScreen =
-            document.getElementById(
-                "blockedScreen"
+        }
+        // Single click starts the site, while double click opens the video.
+        // The short delay lets the browser detect a double click before starting the site.
+        let blockedClickTimer = null;
+        let blockedScreenOpened = false;
+
+        function openWebsiteFromBlockedScreen() {
+            if (blockedScreenOpened) return;
+            blockedScreenOpened = true;
+
+            window.alert(
+                "Browser Filter Notice\n\n" +
+                "If you’re using GoGuardian or a similar browser filter, this page may be blocked after a few seconds. " +
+                "If a browser or administrator block page appears, follow the instructions provided by your school or browser administrator."
             );
 
+            startWebsite();
 
-        const videoURL =
-            "https://proxysuniversity.github.io/no,%20no%20no%20no%20DON%27T%20DO%20THAT!.mp4";
-
-        let blockedOpened = false;
-
-        function fadeBlockedScreen() {
-            if (blockedOpened) return;
-
-            blockedOpened = true;
             blockedScreen.classList.add("fade");
             document.body.classList.remove("locked");
             document.body.classList.add("ready");
 
             setTimeout(function() {
-                blockedScreen.style.display = "none";
+                if (blockedScreen) blockedScreen.remove();
             }, 800);
         }
 
-        let blockedClickTimer = null;
-        let blockedClickCount = 0;
-
         blockedScreen.addEventListener("click", function() {
-            blockedClickCount++;
-
             if (blockedClickTimer) {
                 clearTimeout(blockedClickTimer);
             }
 
-            if (blockedClickCount >= 2) {
-                window.location.href = videoURL;
-                return;
-            }
-
             blockedClickTimer = setTimeout(function() {
-                blockedClickCount = 0;
-
-                playlist = shuffle(songs);
-                currentSong = 0;
-                playSong();
-
-                blockedScreen.classList.add("fade");
-                document.body.classList.remove("locked");
-                document.body.classList.add("ready");
-
-                setTimeout(function() {
-                    blockedScreen.remove();
-                }, 800);
-            }, 500);
+                blockedClickTimer = null;
+                openWebsiteFromBlockedScreen();
+            }, 250);
         });
 
-        /* =========================================================
-           BROWSER NOTIFICATIONS
-        ========================================================= */
-
-        function requestProxyUniversityNotifications() {
-            if (!('Notification' in window)) return;
-
-            if (Notification.permission === 'default') {
-                Notification.requestPermission();
-            }
-        }
-
-        function sendProxyUniversityNotification(title, message) {
-            if (!('Notification' in window)) return;
-            if (Notification.permission !== 'granted') return;
-
-            new Notification(title, {
-                body: message,
-                icon: 'icon.png'
-            });
-        }
-
-        /* Ask for notification permission after the page has loaded. */
-        setTimeout(requestProxyUniversityNotifications, 1500);
-
-
-        /* =========================================================
-           LEAVE / REFRESH WARNING
-        ========================================================= */
-
-        window.addEventListener('beforeunload', function(event) {
+        // Double click opens the existing video link instead of starting the site.
+        blockedScreen.addEventListener("dblclick", function(event) {
             event.preventDefault();
-            event.returnValue = '';
+
+            if (blockedClickTimer) {
+                clearTimeout(blockedClickTimer);
+                blockedClickTimer = null;
+            }
+
+            document.location.href = videoURL;
         });
 
     </script>
